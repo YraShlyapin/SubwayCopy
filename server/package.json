@@ -8,7 +8,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
     "start:dev": "node --trace-warnings --watch index.js",
-    "prisma:gen": "prisma generate"
+    "prisma:gen": "prisma generate",
+    "all": "prisma generate && node index.js"
   },
   "author": "",
   "license": "ISC",

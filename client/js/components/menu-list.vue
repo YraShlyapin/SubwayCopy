@@ -2,7 +2,7 @@
     <div class="container">
         <h1>Наше меню</h1>
         <div class="menu-list">
-            <cardEl v-for="category in categories" :key="category.id" :category="category">asd</cardEl>
+            <cardEl v-for="category in categories" :key="category.id" :element="category" preLink="/menu/">asd</cardEl>
         </div>
     </div>
 </template>

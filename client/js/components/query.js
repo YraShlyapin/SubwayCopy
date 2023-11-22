@@ -19,10 +19,15 @@ query getAllNameCategory {
     }
 }`
 
-export const getAllMealsFor = gql`
-query getAllMeals($link: String!) {
-    getAllMealsFor(link: $link) {
-        id
+export const getCategory = gql`
+query getOneCategory($link: String!) {
+    getOneCategory(link: $link) {
         name
+        link
+        meals {
+            id
+            name
+            link
+        }
     }
 }`

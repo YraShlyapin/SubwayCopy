@@ -1,8 +1,9 @@
+//сделать one catrgory for link
 export default `
 type Query {
     getAllCategory: [category]
-    getOneCategory(id: ID): category
     getAllMealsFor(link: String!): [meal]
+    getOneCategory(link: String!): category
     getOneMeal(id: ID): meal
 }
 
@@ -22,11 +23,15 @@ type category {
 type meal {
     id: ID
     name: String
+    image: String
+    link: String
     id_category: ID
 }
 
 input mealInput {
     name: String
+    image: String
+    link: String
     id_category: ID!
 }
 

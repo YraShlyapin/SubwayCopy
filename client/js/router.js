@@ -1,7 +1,8 @@
 import { defineAsyncComponent } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
-import menuList from '@/menu-list.vue'
-import mealList from '@/meal-list.vue'
+let menuList = defineAsyncComponent(() => import('@/menu-list.vue'))
+//https://stackoverflow.com/questions/67044999/how-to-use-createasynccomponent-in-vuerouter4-0-0-vue3
+let mealList = defineAsyncComponent(() => import('@/meal-list.vue'))
 
 const routes = [
     {

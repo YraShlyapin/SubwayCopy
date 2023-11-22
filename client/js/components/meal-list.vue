@@ -1,8 +1,9 @@
 <template>
-    <div>
-        <ul v-if="meals?.length">
-            <li v-for="meal in meals" :key="meal.id">{{ meal.name }}</li>
-        </ul>
+    <div class="container">
+        <h1>{{ category?.name }}</h1>
+        <div class="menu-list" v-if="category?.meals?.length">
+            <cardEl v-for="meal in category.meals" :key="meal.id" :element="meal" :preLink="'/menu/' + category.link + '/'"></cardEl>
+        </div>
         <p v-else>нет блюд</p>
         {{ a.asd }}
         <canvas id="asd" ref="kkk"></canvas>
@@ -15,18 +16,22 @@
 </script>
 <script>
     import Chart from 'chart.js/auto'
-    import { getAllMealsFor } from '@/query.js'
+    import { getCategory } from '@/query.js'
+    import cardEl from '@/template/cardEl.vue';
 
     export default {
+        components: {
+            cardEl
+        },
         apollo: {
-            meals: {
-                query: getAllMealsFor,
+            category: {
+                query: getCategory,
                 variables() {
                     return {
                         link: this.$route.params.link
                     }
                 },
-                update: date => date.getAllMealsFor
+                update: date => date.getOneCategory
             }
         },
         methods: {
@@ -63,3 +68,6 @@
         },
     }
 </script>
+<style lang="scss" scoped>
+    @import 'style/menu-list.scss';
+</style>

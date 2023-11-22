@@ -30,18 +30,15 @@ const root = {
             }
         })
     },
-    async getOneCategory({id}) {
-        if (+id) {
-            return await prisma.category.findUnique({
-                where: {
-                    id: +id
-                },
-                include: {
-                    meals: true
-                }
-            })
-        }
-        return null
+    async getOneCategory({link}) {
+        return await prisma.category.findUnique({
+            where: {
+                link: link
+            },
+            include: {
+                meals: true
+            }
+        })
     },
     async getAllMealsFor({link}) {
         const meals = (await prisma.category.findUnique({
