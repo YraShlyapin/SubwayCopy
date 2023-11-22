@@ -1,0 +1,24 @@
+.container {
+    max-width: 1000px;
+    width: 100%;
+
+    margin: 0 auto;
+    padding: 18px;
+    box-shadow: 0 0 3px rgba(0,0,0,.40);
+
+    & > h1 {
+        color: var(--main-grin-color);
+        border-bottom: 1px dotted black;
+    }
+
+    .menu-list {
+        width: 100%;
+
+        padding-top: 18px;
+
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 40px 25px;
+    }
+}
