@@ -1,12 +1,15 @@
 <template>
     <div class="container">
-        <h1>{{ category?.name }}</h1>
-        <div class="menu-list" v-if="category?.meals?.length">
-            <cardEl v-for="meal in category.meals" :key="meal.id" :element="meal" :preLink="'/menu/' + category.link + '/'"></cardEl>
-        </div>
-        <p v-else>нет блюд</p>
-        {{ a.asd }}
-        <canvas id="asd" ref="kkk"></canvas>
+        <template v-if="category">
+            <h1>{{ category?.name }}</h1>
+            <div class="menu-list" v-if="category?.meals?.length">
+                <cardEl v-for="meal in category.meals" :key="meal.id" :element="meal" :preLink="'/menu/' + category.link + '/'"></cardEl>
+            </div>
+            <p v-else>нет блюд</p>
+            {{ a.asd }}
+            <canvas id="asd" ref="kkk"></canvas>
+        </template>
+        <h1 v-else>нет такой категории</h1>
     </div>
 </template>
 <script setup>
@@ -31,7 +34,10 @@
                         link: this.$route.params.link
                     }
                 },
-                update: date => date.getOneCategory
+                update(date) {
+                    let result = date.getOneCategory
+                    return result
+                },
             }
         },
         methods: {
@@ -46,7 +52,7 @@
                     { year: 2016, count: 28 },
                 ]
 
-                new Chart(
+                this.chart = new Chart(
                     this.$refs.kkk,
                     {
                         type: 'doughnut',
@@ -61,11 +67,19 @@
                         }
                     }
                 )
+                
             }
         },
-        mounted() {
-            this.createAAA()
-        },
+        // updated: function () {
+        //     this.$nextTick(function () {
+        //         this?.chart?.destroy()
+        //         console.log("asd")
+        //         this.createAAA()
+        //     })
+        // },
+        // mounted() {
+            
+        // },
     }
 </script>
 <style lang="scss" scoped>

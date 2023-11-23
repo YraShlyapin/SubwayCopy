@@ -72,6 +72,16 @@ const root = {
     },
     async createCategory({input}) {
         return await prisma.category.create({data: {...input}})
+    },
+    async deleteCategory({id}) {
+        if (+id){
+            return await prisma.category.delete({
+                where: {
+                    id: +id
+                }
+            })
+        }
+        return null
     }
 }
 

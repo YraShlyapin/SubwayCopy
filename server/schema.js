@@ -10,6 +10,7 @@ type Query {
 type Mutation {
     createMeal(input: mealInput!): meal
     createCategory(input: categoryInput!): category
+    deleteCategory(id: ID!): category
 }
 
 type category {
