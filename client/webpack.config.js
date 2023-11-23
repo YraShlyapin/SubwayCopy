@@ -10,6 +10,8 @@ module.exports = {
     resolve: {
         alias: {
             '@': path.resolve(__dirname, 'js', 'components'),
+            '@query': path.resolve(__dirname, 'js', 'components', 'query'),
+            '@adm': path.resolve(__dirname, 'js', 'components', 'Admin'),
             'stores': path.resolve(__dirname, 'js', 'stores'),
             'style': path.resolve(__dirname, 'css')
         }

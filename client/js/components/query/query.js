@@ -28,6 +28,7 @@ query getOneCategory($link: String!) {
             id
             name
             link
+            image
         }
     }
 }`

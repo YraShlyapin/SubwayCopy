@@ -7,7 +7,7 @@
     </div>
 </template>
 <script>
-    import { getAllCategory } from '@/query.js'
+    import { getAllCategory } from '@query/query.js'
     import cardEl from '@/template/cardEl.vue'
 
     export default {

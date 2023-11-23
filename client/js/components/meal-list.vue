@@ -16,7 +16,7 @@
 </script>
 <script>
     import Chart from 'chart.js/auto'
-    import { getCategory } from '@/query.js'
+    import { getCategory } from '@query/query.js'
     import cardEl from '@/template/cardEl.vue';
 
     export default {

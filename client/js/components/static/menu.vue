@@ -33,7 +33,7 @@
     </header>
 </template>
 <script>
-    import { getAllNameCategory } from '@/query.js'
+    import { getAllNameCategory } from '@query/query.js'
 
     export default {
         data() {
@@ -44,7 +44,8 @@
         apollo: {
             categoriesForMenu: {
                 query: getAllNameCategory,
-                update: data => data.getAllCategory
+                update: data => data.getAllCategory,
+                fetchPolicy: 'cache-and-network'
             }
         }
     }
