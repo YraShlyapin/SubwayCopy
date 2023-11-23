@@ -1,16 +1,22 @@
 <template>
-    <div class="container">
-        <template v-if="category">
-            <h1>{{ category?.name }}</h1>
-            <div class="menu-list" v-if="category?.meals?.length">
-                <cardEl v-for="meal in category.meals" :key="meal.id" :element="meal" :preLink="'/menu/' + category.link + '/'"></cardEl>
-            </div>
-            <p v-else>нет блюд</p>
-            {{ a.asd }}
-            <canvas id="asd" ref="kkk"></canvas>
-        </template>
-        <h1 v-else>нет такой категории</h1>
-    </div>
+    <template v-if="!$apollo.queries.category.loading">
+        <div class="container">
+            <template v-if="category">
+                <h1>{{ category?.name }}</h1>
+                
+                    <div class="menu-list" v-if="category?.meals?.length">
+                        <cardEl v-for="meal in category.meals" :key="meal.id" :element="meal" :preLink="'/menu/' + category.link + '/'"></cardEl>
+                    </div>
+                    <p v-else>нет блюд</p>
+                {{ a.asd }}
+                <canvas id="asd" ref="kkk"></canvas>
+            </template>
+            <h1 v-else>нет такой категории</h1>
+        </div>
+    </template>
+    <template v-else>
+        <ListOfSkelet></ListOfSkelet>
+    </template>
 </template>
 <script setup>
     import { First } from 'stores/FirstPiniaStore.js'
@@ -21,10 +27,12 @@
     import Chart from 'chart.js/auto'
     import { getCategory } from '@query/query.js'
     import cardEl from '@/template/cardEl.vue';
+    import ListOfSkelet from '@/skeleton/menu-list-skelet.vue'
 
     export default {
         components: {
-            cardEl
+            cardEl,
+            ListOfSkelet
         },
         apollo: {
             category: {

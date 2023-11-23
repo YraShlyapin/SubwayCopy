@@ -1,5 +1,6 @@
 import { defineAsyncComponent } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
+import ListOfSkelet from '@/skeleton/menu-list-skelet.vue'
 //let App = defineAsyncComponent(() => import('@/App.vue'))
 //https://stackoverflow.com/questions/67044999/how-to-use-createasynccomponent-in-vuerouter4-0-0-vue3
 
@@ -10,15 +11,24 @@ const routes = [
         children: [
             {
                 path: '',
-                component: () => import('@/menu-list.vue')
+                component: defineAsyncComponent({
+                    loader: () => import('@/menu-list.vue'),
+                    loadingComponent: ListOfSkelet
+                })
             },
             {
                 path: 'menu',
-                component: () => import('@/menu-list.vue')
+                component: defineAsyncComponent({
+                    loader: () => import('@/menu-list.vue'),
+                    loadingComponent: ListOfSkelet
+                })
             },
             {
                 path: 'menu/:link',
-                component: () => import('@/meal-list.vue')
+                component: defineAsyncComponent({
+                    loader: () => import('@/meal-list.vue'),
+                    loadingComponent: ListOfSkelet
+                })
             },
             {
                 path: 'menu/:catlink/:meallink',

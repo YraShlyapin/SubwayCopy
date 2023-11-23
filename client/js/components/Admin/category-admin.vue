@@ -1,6 +1,7 @@
 <template>
     <div>
         <form @submit.prevent="postCategory">
+            <!--переделать сюда редактирование-->
             <input type="text" v-model="formData.name">
             <input type="text" v-model="formData.link">
             <input type="text" v-model="formData.image">
@@ -8,7 +9,7 @@
         </form>
         <template v-if="categories?.length">
             <div v-for="category, index in categories" :key="category.id">
-
+                <template v-if="category.id != editeData.id">
                     <p>{{ category.id }}</p>
                     <img :src="category.image">
                     <p>name: {{ category.name }}</p>
@@ -25,7 +26,17 @@
                     <br/>
                     <button @click="deleteCategory(index)">удалить</button>
                     <button @click="setEditeIndex(category.id)">редактировать</button>
-
+                </template>
+                <template v-else>
+                    <p>{{ category.id }}</p>
+                    <input type="text" :placeholder="'name: ' + category.name" v-model="editeData.name">
+                    <input type="text" :placeholder="'link: ' + category.link" v-model="editeData.link">
+                    <img :src="editeData.image || category.image" alt="">
+                    <input type="text" :placeholder="category.image" v-model="editeData.image">
+                    <br/>
+                    <button @click="unsetIndex">отменить</button>
+                    <button @click="editeCategory(index)">сохранить</button>
+                </template>
             </div>
         </template>
         <p v-else>нет категорий</p>
