@@ -19,7 +19,7 @@ const prisma = new PrismaClient()
 const app = express()
 
 app.use(cors())
-app.use(express.static(path.resolve(__dirname, '..', 'client')))
+app.use(express.static(path.resolve(__dirname, '..', 'client', 'build')))
 
 const root = {
     //query
@@ -94,7 +94,7 @@ app.use(
     })
 )
 
-app.use((req, res) => res.sendFile(path.resolve(__dirname, '..', 'client', 'index.html')))
+app.use((req, res) => res.sendFile(path.resolve(__dirname, '..', 'client', "build", 'index.html')))
 
 app.listen(port, host, () => {
     console.log(`server is start on http://${host}:${port}`)

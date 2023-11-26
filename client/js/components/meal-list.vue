@@ -24,7 +24,7 @@
     const a = First()
 </script>
 <script>
-    import Chart from 'chart.js/auto'
+    // import Chart from 'chart.js/auto'
     import { getCategory } from '@query/query.js'
     import cardEl from '@/template/cardEl.vue';
     import ListOfSkelet from '@/skeleton/menu-list-skelet.vue'
@@ -48,36 +48,36 @@
                 },
             }
         },
-        methods: {
-            async createAAA() {
-                const dataaaa = [
-                    { year: 2010, count: 10 },
-                    { year: 2011, count: 20 },
-                    { year: 2012, count: 15 },
-                    { year: 2013, count: 25 },
-                    { year: 2014, count: 22 },
-                    { year: 2015, count: 30 },
-                    { year: 2016, count: 28 },
-                ]
+        // methods: {
+        //     async createAAA() {
+        //         const dataaaa = [
+        //             { year: 2010, count: 10 },
+        //             { year: 2011, count: 20 },
+        //             { year: 2012, count: 15 },
+        //             { year: 2013, count: 25 },
+        //             { year: 2014, count: 22 },
+        //             { year: 2015, count: 30 },
+        //             { year: 2016, count: 28 },
+        //         ]
 
-                this.chart = new Chart(
-                    this.$refs.kkk,
-                    {
-                        type: 'doughnut',
-                        data: {
-                            labels: dataaaa.map(e => e.year),
-                            datasets: [
-                                {
-                                    label: 'за год фигня какая-то',
-                                    data: dataaaa.map(e => e.count)
-                                }
-                            ]
-                        }
-                    }
-                )
+        //         this.chart = new Chart(
+        //             this.$refs.kkk,
+        //             {
+        //                 type: 'doughnut',
+        //                 data: {
+        //                     labels: dataaaa.map(e => e.year),
+        //                     datasets: [
+        //                         {
+        //                             label: 'за год фигня какая-то',
+        //                             data: dataaaa.map(e => e.count)
+        //                         }
+        //                     ]
+        //                 }
+        //             }
+        //         )
                 
-            }
-        },
+        //     }
+        // },
         // updated: function () {
         //     this.$nextTick(function () {
         //         this?.chart?.destroy()
