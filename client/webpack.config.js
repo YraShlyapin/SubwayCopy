@@ -4,7 +4,6 @@ const MiniCssExtract = require('mini-css-extract-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
 const dotenv = require('dotenv-webpack')
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 const path = require('path')
 
 module.exports = {
@@ -62,8 +61,6 @@ module.exports = {
         new webpack.DefinePlugin({
             __VUE_OPTIONS_API__: true,
             __VUE_PROD_DEVTOOLS__: false,
-        }),
-        new BundleAnalyzerPlugin()
-    ],
-    watch: true,
+        })
+    ]
 }
