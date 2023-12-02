@@ -2,14 +2,10 @@ FROM node
 
 WORKDIR /app
 
-COPY client/package.json ./client
-
-RUN npm i && npm run start:prod
-
-COPY server/package.json ./server
-
-RUN npm i
-
 COPY . .
 
-CMD [ "cd", "server", "&&", "npm", "start" ]
+RUN cd client && npm i && npm run start:prod && cd ../server && npm i
+
+EXPOSE 8080
+
+CMD cd server && npm start
